@@ -68,6 +68,23 @@ public class myFeatureSteps {
 	public void user_navigated_to_LIHP() throws Throwable {
 		Assert.assertTrue(driver.getCurrentUrl().contains("index-in.mhtml"));
 	}
+	
+	@And("^user enter username:([^\"]*), email:([^\"]*) and password:([^\"]*)$")
+	public void user_enter_username_email_and_password(String username, String email, String password) throws Throwable {
+		driver.findElement(By.id("user-register")).sendKeys(username);
+		driver.findElement(By.id("email-register")).sendKeys(email);
+		driver.findElement(By.id("pass-register")).sendKeys(password);
+	}
+	
+	@And("^user agree with terms of service$")
+	public void user_agree_with_terms_of_service() throws Throwable {
+		driver.findElement(By.id("agree-to-tos")).click();
+	}
+
+	@When("^user click on the create account button$")
+	public void user_click_on_the_create_account_button() throws Throwable {
+		driver.findElement(By.id("subscribe-submit-button")).click();
+	}
 
 
 }
