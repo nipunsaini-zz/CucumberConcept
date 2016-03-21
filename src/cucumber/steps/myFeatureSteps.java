@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.DataTable;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,7 +17,18 @@ import cucumber.api.java.en.When;
 
 public class myFeatureSteps {
 	
-	WebDriver driver = new FirefoxDriver();
+	WebDriver driver;
+	
+	@Before
+	public void beforeScenario(){
+		driver = new FirefoxDriver();
+	}
+	
+	@After
+	public void afterScenario(){
+		driver.close();
+		driver.quit();
+	}
 	
 	@Given("^user go to shutterstock qa website$")
 	public void user_go_to_shutterstock_qa_website() throws Throwable {
@@ -40,8 +53,7 @@ public class myFeatureSteps {
 
 	@And("^user close the browser$")
 	public void user_close_the_browser() throws Throwable {
-		driver.close();
-		driver.quit();
+		
 	}
 
 	@When("^user click on link \"([^\"]*)\"$")

@@ -5,7 +5,6 @@ Feature: Proof of concept that my framework works
     When user enter search keyword in search bar
     And user click on the search button
     Then user is navigated to cat.mhtml page
-    And user close the browser
     
  Scenario: Check the title of the footage site
  	Given user go to shutterstock qa website
